@@ -1,0 +1,65 @@
+﻿@inherits LoginLayout
+@page "/login"
+@using TBuggerX.Data
+
+
+    <div>
+        
+        <div class="container-fluid float-left">
+            <div class="row loginSection">
+                <div class="col loginArt">
+                    <img src="../../assets/signup_art.png" alt />
+                </div>
+                <div class="col loginForm">
+                    <h2>Log In</h2>
+                    <form v-on:submit.prevent="loginFunc">
+                        <div class="form-group">
+                            <label for="input_username">Username</label>
+                            <input type="username"
+                                   class="form-control"
+                                   id="input_username"
+                                   placeholder="Enter username"
+                                   v-model="this.login.username" />
+                        </div>
+                        <div class="form-group">
+                            <label for="input_password">Password</label>
+                            <input type="password"
+                                   class="form-control"
+                                   id="input_password"
+                                   placeholder="Password"
+                                   v-model="this.login.password" />
+                        </div>
+                        <small class="accountRecovery">
+                            Forgot your
+                            <a href="#">username</a> or
+                            <a href="#">password</a>?
+                        </small>
+                        <div class="form-group">
+                            <button type="submit"
+                                    class="btn btn-primary loginButton float-right">
+                                Log In
+                            </button>
+                        </div>
+                        <div class="form-group bottom">
+                            <p>
+                                <img class="forgotIcon" src="../../assets/exclamation.png" alt />
+                                Don't have an account?
+                                <a href="/#/signup">Sign Up!</a>
+                            </p>
+                            <br />
+                            <div class="dropdown-divider"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+@code {
+    string username;
+
+
+}

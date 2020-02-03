@@ -1,0 +1,81 @@
+﻿@page "/tickets"
+@using TBuggerX.Data
+
+<h3>Tickets</h3>
+<div class="col-12">
+    <h3><b>Enter Author Information</b></h3>
+    <hr />
+
+    
+    
+
+    <EditForm Model="@user" OnValidSubmit="@SaveUser">
+        @*<DataAnnotationsValidator />*@
+
+        <div class="col-12 row">
+            <label class="col-2 font-weight-bold">first name :</label>
+            <input @ref="firstNameTextBox" class="form-control col-3" @bind="user.FirstName" placeholder="first name" />
+            &nbsp;<ValidationMessage For="@(() => user.FirstName)" />
+        </div>
+        <br />
+        <div class="col-12 row">
+            <label class="col-2 font-weight-bold">last name :</label>
+            <InputText class="form-control col-3" @bind-Value="user.LastName" placeholder="last name" />
+            &nbsp;<ValidationMessage For="@(() => user.LastName)" />
+        </div>
+        <br />
+        <br />
+        <div class="col-12 row">
+            <label class="col-2 font-weight-bold">email address :</label>
+            <InputText class="form-control col-3" @bind-Value="user.EmailAddress" placeholder="email address" />
+            &nbsp;<ValidationMessage For="@(() => user.EmailAddress)" />
+        </div>
+        <br />
+        <div class="col-12 row">
+            <label class="col-2 font-weight-bold">JobLevel :</label>
+            <InputNumber class="form-control col-3" @bind-Value="user.JobLevel" />
+            &nbsp;<ValidationMessage For="@(() => user.JobLevel)" />
+        </div>
+        <br />
+        <div class="col-12 row">
+            <span class="col-2"></span>
+            <input type="submit" class="form-control col-1 btn btn-primary" value="Save" />
+            <span>&nbsp;</span>
+            <input type="submit" class="form-control col-1 btn btn-primary" value="Clear" />
+        </div>
+
+    </EditForm>
+
+</div>
+@code {
+    public user user { get; set; }
+
+    public List<user> userList { get; set; }
+
+    ElementReference firstNameTextBox;
+
+    private async Task SaveUser()
+    {
+       @* //Result = await authorService.SaveAuthor(author);
+        if (author.AuthorId == 0)
+            await Http.PostJsonAsync("https://localhost:44394/api/authors", author);
+        else
+            await Http.PutJsonAsync("https://localhost:44394/api/authors/" + author.AuthorId, author);
+
+        await LoadAuthors();
+
+        Result = true;
+        IsVisible = true;
+
+        var firstName = author.FirstName;
+        var lastName = author.LastName;
+
+        RecordName = firstName + " " + lastName;
+
+        author = new Author();
+
+        //await JSRuntime.InvokeVoidAsync("saveMessage", firstName, lastName);
+        //await JSRuntime.InvokeVoidAsync("setFocusOnElement", firstNameTextBox);*@
+    }
+
+}
